@@ -1,3 +1,4 @@
+from .schema import schema, print_schema
 from .types import (
     Citations,
     Config,
