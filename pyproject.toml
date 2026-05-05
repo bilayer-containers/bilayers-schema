@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bilayers-schema"
+version = "0.1.0"
+description = "Schema and shared type definitions for Bilayers"
+requires-python = ">=3.9"
+dependencies = [
+    "pyyaml>=6.0.1,<7",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["bilayers_schema*"]
+
+[tool.setuptools.package-data]
+bilayers_schema = ["schema.yaml"]
