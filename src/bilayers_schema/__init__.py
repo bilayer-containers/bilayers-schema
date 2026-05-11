@@ -8,6 +8,7 @@ from .types import (
     Input,
     Output,
     Parameter,
+    DisplayOnly,
     InterfaceInput,
 )
 
@@ -22,5 +23,6 @@ __all__ = [
     "Input",
     "Output",
     "Parameter",
+    "DisplayOnly",
     "InterfaceInput",
 ]

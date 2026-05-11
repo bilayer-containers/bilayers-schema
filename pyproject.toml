@@ -16,4 +16,14 @@ where = ["src"]
 include = ["bilayers_schema*"]
 
 [tool.setuptools.package-data]
-bilayers_schema = ["schema.yaml"]
+bilayers_schema = ["schema.yaml", "py.typed"]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
+
+[tool.pixi.dependencies]
+python = ">=3.9"
+
+[tool.pixi.pypi-dependencies]
+bilayers-schema = { path = ".", editable = true }
