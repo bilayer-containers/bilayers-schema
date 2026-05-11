@@ -76,6 +76,20 @@ class Parameter(TypedDict, total=False):
     append_value: Optional[bool]  # w.r.t type == checkbox
     multiselect: Optional[bool]  # w.r.t type == dropdown
 
+class DisplayOnly(TypedDict, total=False):
+    name: str
+    type: str
+    label: str
+    description: str
+    default: Any
+    optional: bool
+    section_id: str
+    mode: str
+    options: Optional[list[dict[str, str]]]  # w.r.t type == radio, dropdown
+    output_dir_set: Optional[bool]  # w.r.t type == textbox
+    append_value: Optional[bool]  # w.r.t type == checkbox
+    multiselect: Optional[bool]  # w.r.t type == dropdown
+
 
 class Config(TypedDict):
     citations: dict[str, Citations]
@@ -84,7 +98,7 @@ class Config(TypedDict):
     inputs: dict[str, Input]
     outputs: dict[str, Output]
     parameters: dict[str, Parameter]
-    display_only: Optional[dict[str, Parameter]]
+    display_only: Optional[dict[str, DisplayOnly]]
     docker_image: DockerImage
 
 
@@ -93,7 +107,7 @@ class InterfaceInput(TypedDict):
     inputs: dict[str, Input]
     outputs: dict[str, Output]
     parameters: dict[str, Parameter]
-    display_only: Optional[dict[str, Parameter]]
+    display_only: Optional[dict[str, DisplayOnly]]
     exec_function: ExecFunction
     citations: dict[str, Citations]
     docker_image: DockerImage
