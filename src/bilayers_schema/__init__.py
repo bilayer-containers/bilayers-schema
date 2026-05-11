@@ -12,6 +12,8 @@ from .types import (
 )
 
 __all__ = [
+    "schema",
+    "print_schema",
     "Citations",
     "Config",
     "DockerImage",
