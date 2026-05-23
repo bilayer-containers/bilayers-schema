@@ -6,6 +6,18 @@ build-backend = "setuptools.build_meta"
 name = "bilayers-schema"
 version = "0.1.0"
 description = "Schema and shared type definitions for Bilayers"
+authors = [
+    {name = "Rajavi Shah", email = "shahraja@broadinstitute.org"},
+    {name = "Nodar Gogoberidze", email = "gnodar01@gmail.com"},
+    {name = "Beth Cimini", email = "bcimini@broadinstitute.org"}
+]
+maintainers = [
+    {name = "Rajavi Shah", email = "shahraja@broadinstitute.org"},
+    {name = "Nodar Gogoberidze", email = "gnodar01@gmail.com"},
+    {name = "Beth Cimini", email = "bcimini@broadinstitute.org"}
+]
+readme = "README.md"
+license = "BSD-3-Clause"
 requires-python = ">=3.9"
 dependencies = [
     "pyyaml>=6.0.1,<7",
@@ -27,3 +39,32 @@ python = ">=3.9"
 
 [tool.pixi.pypi-dependencies]
 bilayers-schema = { path = ".", editable = true }
+
+[project.optional-dependencies]
+lint = ["ruff"]
+typecheck = ["pyright", "types-pyyaml"]
+dev = [
+    "bilayers-schema[lint]",
+    "bilayers-schema[typecheck]"
+]
+
+
+[tool.pixi.feature.dev.pypi-dependencies]
+pre-commit = "*"
+
+[tool.pixi.feature.dev.activation]
+scripts = ["scripts/install-pre-commit.sh"]
+
+[tool.pixi.environments]
+dev = ["dev", "lint", "typecheck"]
+
+[tool.ruff]
+line-length = 160
+
+[tool.ruff.lint]
+select = ["W", "F", "C", "E"]
+extend-select = ["W291", "W292", "W293", "F401", "F823", "F841", "C901", "E501"]
+ignore = ["E501"]
+
+[tool.pyright]
+pythonVersion = "3.10"
