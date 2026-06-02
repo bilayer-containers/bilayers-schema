@@ -43,9 +43,11 @@ bilayers-schema = { path = ".", editable = true }
 [project.optional-dependencies]
 lint = ["ruff"]
 typecheck = ["pyright", "types-pyyaml"]
+test = ["pytest"]
 dev = [
     "bilayers-schema[lint]",
-    "bilayers-schema[typecheck]"
+    "bilayers-schema[typecheck]",
+    "bilayers-schema[test]"
 ]
 
 
@@ -64,7 +66,6 @@ line-length = 160
 [tool.ruff.lint]
 select = ["W", "F", "C", "E"]
 extend-select = ["W291", "W292", "W293", "F401", "F823", "F841", "C901", "E501"]
-ignore = ["E501"]
 
 [tool.pyright]
 pythonVersion = "3.10"

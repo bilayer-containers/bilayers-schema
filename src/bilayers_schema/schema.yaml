@@ -1,5 +1,5 @@
 ---
-id: https://w3id.org/my-org/bilayers_schema
+id: https://bilayers.org/
 name: bilayers_schema
 title: bilayers_schema
 description: |-
@@ -115,7 +115,6 @@ classes:
       # Conditional w.r.t to type
       - output_dir_set
       - options
-      - interactive
       - append_value
       - multiselect
     rules:
@@ -157,6 +156,7 @@ classes:
       - default
       - cli_tag
       - cli_order
+      - interactive
 
   TypeDisplayOnly:
     aliases: ["display_only"]
