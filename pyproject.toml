@@ -43,7 +43,7 @@ bilayers-schema = { path = ".", editable = true }
 [project.optional-dependencies]
 lint = ["ruff"]
 typecheck = ["pyright", "types-pyyaml"]
-test = ["pytest"]
+test = ["pytest", "linkml-runtime"]
 dev = [
     "bilayers-schema[lint]",
     "bilayers-schema[typecheck]",
