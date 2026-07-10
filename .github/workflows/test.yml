@@ -14,8 +14,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      # Python version and all dependencies come from pyproject.toml + pixi.lock,
-      # so builds are reproducible and there is no pinned Python here.
+      # No Python version is pinned in this workflow; pixi.lock pins Python
+      # and all dependencies, so builds are reproducible.
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.10.0
         with:
