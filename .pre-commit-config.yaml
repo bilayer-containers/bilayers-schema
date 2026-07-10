@@ -3,12 +3,12 @@ repos:
     hooks:
       - id: ruff-check
         name: ruff check
-        entry: pixi run ruff check
+        entry: pixi run -e dev ruff check
         language: system
         types: [python]
 
       - id: pyright
         name: pyright
-        entry: pixi run pyright
+        entry: pixi run -e dev pyright
         language: system
         pass_filenames: false
