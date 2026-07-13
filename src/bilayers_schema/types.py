@@ -76,6 +76,7 @@ class Parameter(TypedDict, total=False):
     append_value: Optional[bool]  # w.r.t type == checkbox
     multiselect: Optional[bool]  # w.r.t type == dropdown
 
+
 class DisplayOnly(TypedDict, total=False):
     name: str
     type: str

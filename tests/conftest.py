@@ -5,9 +5,11 @@ from bilayers_schema import schema as _schema
 
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
 
+
 @pytest.fixture
 def schema():
     return _schema
+
 
 @pytest.fixture
 def classical_segmentation_config():

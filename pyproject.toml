@@ -62,10 +62,10 @@ dev = ["dev", "lint", "typecheck"]
 
 [tool.ruff]
 line-length = 160
+preview = true
 
 [tool.ruff.lint]
 select = ["W", "F", "C", "E"]
-extend-select = ["W291", "W292", "W293", "F401", "F823", "F841", "C901", "E501"]
 
 [tool.pyright]
 pythonVersion = "3.10"
