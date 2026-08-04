@@ -106,7 +106,7 @@ def test_every_typeddict_is_accounted_for() -> None:
 
 
 def test_every_concrete_class_is_accounted_for(sv: SchemaView) -> None:
-    defined = set(sv.all_classes(imports=False))
+    defined = {str(s) for s in sv.all_classes(imports=False)}
     unaccounted = defined - set(MAPPING) - SCHEMA_ONLY
     assert not unaccounted, (
         f"LinkML classes in schema.yaml not in MAPPING or SCHEMA_ONLY: {sorted(unaccounted)}. "
