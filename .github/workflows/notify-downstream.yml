@@ -7,6 +7,10 @@ on:
         types:
             - closed
 
+# Since the job below never uses GITHUB_TOKEN (repository-dispatch auth comes from REPO_TRIGGER_TOKEN)
+# we've removed the default permission. In future, if we add a step that uses GITHUB_TOKEN, we should explicitly add the required permissions to that step.
+permissions: {}
+
 jobs:
     notify:
         name: Notify bilayers-algorithms of schema change
