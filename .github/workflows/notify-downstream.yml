@@ -1,0 +1,21 @@
+name: Notify bilayers-algorithms of schema change
+
+on:
+    pull_request:
+        branches:
+            - main
+        types:
+            - closed
+
+jobs:
+    notify:
+        name: Notify bilayers-algorithms of schema change
+        runs-on: ubuntu-latest
+        if: github.event.pull_request.merged == true
+        steps:
+            - name: Notify bilayers-algorithms of schema change
+              uses: peter-evans/repository-dispatch@v4
+              with:
+                  token: ${{ secrets.REPO_TRIGGER_TOKEN }}
+                  repository: bilayer-containers/bilayers-algorithms
+                  event-type: schema-updated
