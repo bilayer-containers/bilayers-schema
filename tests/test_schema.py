@@ -33,7 +33,7 @@ def test_required_top_level_slots(schema):
 
 def test_type_enum_has_expected_values(schema):
     values = schema["enums"]["TypeEnum"]["permissible_values"]
-    for expected in ["image", "measurement", "checkbox", "dropdown", "radio", "textbox"]:
+    for expected in ["image", "measurement", "checkbox", "dropdown", "radio", "textbox", "secret"]:
         assert expected in values
 
 

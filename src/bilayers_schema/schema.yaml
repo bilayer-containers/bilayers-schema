@@ -390,6 +390,7 @@ enums:
       dropdown:
       radio:
       textbox:
+      secret:
       # types for inputs and outputs
       image:
       measurement:
