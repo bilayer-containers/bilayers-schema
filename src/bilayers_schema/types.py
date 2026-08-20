@@ -43,6 +43,7 @@ class InputOutputBase(TypedDict, total=False):
     format: list[str]
     folder_name: str
     file_count: str
+    structure: list[Any]
     section_id: str
     mode: str
     depth: Optional[bool]  # w.r.t type == image
@@ -93,6 +94,7 @@ class DisplayOnly(TypedDict, total=False):
 
 
 class Config(TypedDict):
+    schema_version: str
     citations: dict[str, Citations]
     algorithm_folder_name: str
     exec_function: ExecFunction

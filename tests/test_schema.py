@@ -39,6 +39,7 @@ def test_type_enum_has_expected_values(schema):
 
 def test_config_has_required_top_level_keys(classical_segmentation_config):
     config = classical_segmentation_config
+    assert "schema_version" in config
     assert "inputs" in config
     assert "outputs" in config
     assert "parameters" in config
