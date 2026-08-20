@@ -94,6 +94,7 @@ class DisplayOnly(TypedDict, total=False):
 
 
 class Config(TypedDict):
+    schema_version: str
     citations: dict[str, Citations]
     algorithm_folder_name: str
     exec_function: ExecFunction

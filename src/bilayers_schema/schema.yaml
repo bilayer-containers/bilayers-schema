@@ -19,6 +19,7 @@ classes:
   SpecContainer:
     description: "SpecContainer class which holds all the high_level keywords from config.yaml file of specific algorithm"
     slots: 
+    - schema_version
     - inputs
     - outputs
     - parameters
@@ -216,6 +217,10 @@ classes:
       - value
 
 slots:
+  schema_version:
+    description: "Bilayers schema name and version this config is written against"
+    range: string
+    required: true
   inputs:
     description: "Inputs to the algorithm from the last step of the workflow"
     range: TypeInput
