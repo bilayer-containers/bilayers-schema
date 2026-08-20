@@ -45,6 +45,7 @@ classes:
       - unique_string
       - folder_name
       - file_count
+      - structure
       - section_id
       - mode
       # Conditional w.r.t to type (if type == image, then include below flags)
@@ -360,6 +361,11 @@ slots:
   file_count:
     description: "Type of Number of files"
     range: FileTypeEnum
+    required: false
+  structure:
+    description: "Logical structure of the inputs and outputs, free-form."
+    range: Any
+    multivalued: true
     required: false
   # slots specific to inputs and outputs, if type is image
   subtype:
