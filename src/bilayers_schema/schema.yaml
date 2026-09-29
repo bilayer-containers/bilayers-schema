@@ -299,7 +299,6 @@ slots:
     range: Any
   default:
     description: "Default value of the parameter"
-    required: true
     range: Any
   cli_tag:
     description: "CLI tag of the object"
