@@ -31,10 +31,18 @@ def test_required_top_level_slots(schema):
     assert schema["slots"]["exec_function"]["required"] is True
 
 
-def test_type_enum_has_expected_values(schema):
-    values = schema["enums"]["TypeEnum"]["permissible_values"]
-    for expected in ["image", "measurement", "checkbox", "dropdown", "radio", "textbox", "secret"]:
+def test_input_output_type_enum_has_expected_values(schema):
+    values = schema["enums"]["InputOutputTypeEnum"]["permissible_values"]
+    for expected in ["image", "measurement", "array", "file", "executable"]:
         assert expected in values
+    assert "secret" not in values
+
+
+def test_parameter_display_type_enum_has_expected_values(schema):
+    values = schema["enums"]["ParameterDisplayTypeEnum"]["permissible_values"]
+    for expected in ["integer", "float", "boolean", "checkbox", "dropdown", "radio", "textbox", "secret"]:
+        assert expected in values
+    assert "image" not in values
 
 
 def test_config_has_required_top_level_keys(classical_segmentation_config):
