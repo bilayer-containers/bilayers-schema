@@ -153,6 +153,24 @@ classes:
               required: true
             multiselect:
               required: true
+      - description: "A secret must not have a default"
+        preconditions:
+          slot_conditions:
+            type:
+              equals_string: "secret"
+        postconditions:
+          slot_conditions:
+            default:
+              value_presence: ABSENT
+      - description: "Default value is required for every type except secret"
+        preconditions:
+          slot_conditions:
+            type:
+              equals_string_in: [integer, float, boolean, checkbox, dropdown, radio, textbox]
+        postconditions:
+          slot_conditions:
+            default:
+              required: true
 
   TypeParameter:
     aliases: ["parameters"]
