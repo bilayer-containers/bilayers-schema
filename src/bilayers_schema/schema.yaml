@@ -53,12 +53,15 @@ classes:
       - timepoints
       - tiled
       - pyramidal
+    slot_usage:
+      - type:
+          range: InputOutputTypeEnum
 
   TypeInput:
     aliases: ["inputs"]
     description: "Inputs to the algorithm from the last step of the workflow"
     is_a: AbstractWorkflowDetails
-    rules: 
+    rules:
       - description: "Extra flags needed iff type is image"
         preconditions:
           slot_conditions:
@@ -81,7 +84,7 @@ classes:
     aliases: ["outputs"]
     description: "Outputs of the algorithm to the next step in the workflow"
     is_a: AbstractWorkflowDetails
-    rules: 
+    rules:
       - description: "Extra flags needed iff type is image"
         preconditions:
           slot_conditions:
@@ -117,6 +120,9 @@ classes:
       - options
       - append_value
       - multiselect
+    slot_usage:
+      - type:
+          range: ParameterDisplayTypeEnum
     rules:
       - description: "Extra flags needed iff type is checkbox"
         preconditions:
@@ -146,6 +152,24 @@ classes:
             options:
               required: true
             multiselect:
+              required: true
+      - description: "A secret must not have a default"
+        preconditions:
+          slot_conditions:
+            type:
+              equals_string: "secret"
+        postconditions:
+          slot_conditions:
+            default:
+              value_presence: ABSENT
+      - description: "Default value is required for every type except secret"
+        preconditions:
+          slot_conditions:
+            type:
+              equals_string_in: [integer, float, boolean, checkbox, dropdown, radio, textbox]
+        postconditions:
+          slot_conditions:
+            default:
               required: true
 
   TypeParameter:
@@ -287,14 +311,12 @@ slots:
   type:
     description: "Type of the inputs, parameters and outputs"
     required: true
-    range: TypeEnum
   label:
     description: "Label of the object, but also Radio button's label"
     required: true
     range: Any
   default:
     description: "Default value of the parameter"
-    required: true
     range: Any
   cli_tag:
     description: "CLI tag of the object"
@@ -380,7 +402,15 @@ slots:
     range: boolean
 
 enums:
-  TypeEnum:
+  InputOutputTypeEnum:
+    description: "Type of the inputs and outputs"
+    permissible_values:
+      image:
+      measurement:
+      array:
+      file:
+      executable:
+  ParameterDisplayTypeEnum:
     description: "Type of the parameters, display_only"
     permissible_values:
       integer:
@@ -390,12 +420,7 @@ enums:
       dropdown:
       radio:
       textbox:
-      # types for inputs and outputs
-      image:
-      measurement:
-      array:
-      file:
-      executable:
+      secret:
   ModeEnum:
     description: "Mode of the parameters, display_only"
     permissible_values:
